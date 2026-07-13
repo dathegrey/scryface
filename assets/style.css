@@ -1,0 +1,42 @@
+html, body{
+  color: #333;
+}
+
+.tag-cloud {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.tag-btn {
+  display:none;
+}
+
+.tag-btn + label {
+  display: inline-block;
+  padding: 5px 10px;
+  margin: 2px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.tag-btn:not(:checked) + label {
+  background-color: #c0c0c0;
+  border: solid 1px #c0c0c0;
+  filter: drop-shadow(2px 2px 0px rgba(51, 51, 51, 0.5));
+}
+
+.tag-btn:checked + label {
+  background-color: #d3d3d3;
+  border: solid 1px rgba(51, 51, 51, 0.5);
+  transform: translateY(2px);
+}
+
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.card {
+  border: 1px solid #ccc;
+}
