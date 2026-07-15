@@ -1,0 +1,12 @@
+[
+  {
+  "name": "Eddie Redmayne",
+  "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Eddie_Redmayne_2014.jpg/800px-Eddie_Redmayne_2014.jpg",
+  "tags": ["gender-male", "brown-hair", "green-eyes", "light-skin", "tuxedo"]
+  },
+  {
+  "name": "Sophie Skelton",
+  "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1/11/Sophie_Skelton_by_Gage_Skidmore_2.jpg/800px-Sophie_Skelton_by_Gage_Skidmore_2.jpg",
+  "tags": ["gender-female", "brown-eyes", "hazel-eyes", "brown-hair", "light-skin"]
+  }
+]
