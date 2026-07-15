@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>scryface2</title>
+  <link rel="stylesheet" href="/assets/style.css">
+  <script src="/assets/app.js" defer></script>
+</head>
+<body>
+  <div id="form-container">
+    <form id="search-form" method=""POST" action="">
+      <input type="text" id="searchbar" name="searchbar" placeholder="Name">
+      <select name="gender" id="gender-select">
+        <option value="">All Genders</option>
+        <option value="gender-female">Female</option>
+        <option value="gender-male">Male</option>
+        <option value="gender-enby">Non-Binary</option>
+      </select>
+      <select name="eyecolor" id="eye-color-select">
+        <option value="">All Eye Colors</option>
+        <option value="blue-eyes">Blue</option>
+        <option value="brown-eyes">Brown</option>
+        <option value="gray-eyes">Gray</option>
+        <option value="green-eyes">Green</option>
+        <option value="hazel-eyes">Hazel</option>
+      </select>
+      <select name="haircolor" id="hair-color-select">
+        <option value="">All Hair Colors</option>
+        <option value="black-hair">Black</option>
+        <option value="blonde-hair">Blonde</option>
+        <option value="brown-hair">Brown</option>
+        <option value="gray-hair">Gray</option>
+        <option value="red-hair">Red</option>
+      </select>
+      <select name="skintone" id="skin-tone-select">
+        <option value="">All Skin Tones</option>
+        <option value="light-skin">Light</option>
+        <option value="medium-skin">Medium</option>
+        <option value="dark-skin">Dark</option>
+      </select>
+      <button type="submit" name="submit-btn" id="search-button" value="Submit">Search</button>
+      <button type="button" id="reset-btn" onclick="location.href=''">Reset</button>
+    </form>
+  </div>
+  <div id="tags-container">
+    <script type="module">
+      import { tags } from './assets/tags.js';
+      tags.forEach(tag => { document.getElementById('tags-container').innerHTML += "<input type='checkbox' name='tags' id='" + tag + "' value='" + tag + "' class='tag-btn' onchange='getResults();'> <label class='tag-label' for='" + tag + "'>" + tag + "</label>" })
+    </script>
+  </div>
+  <div id="face-container"></div>
+</body>
+</html>
