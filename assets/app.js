@@ -13,7 +13,7 @@ async function getResults() {
   //console.log('tags:', formTags);
   // Load the SQLite database and filter the results based on the form data
   if ( db == null) {
-    db = await fetch('/assets/data.json')
+    db = await fetch('/scryface/assets/data.json')
       .then(response => {
         if (!response.ok) {
           throw new Error('Network response was not ok');
