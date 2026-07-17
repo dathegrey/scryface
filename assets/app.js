@@ -9,8 +9,6 @@ async function getResults() {
   const data = Object.fromEntries(formData.entries());
   let formTags = document.querySelectorAll('input[name="tags"]:checked');
   formTags = Array.from(formTags).map(cb => cb.value);
-  //console.log('data:', data);
-  //console.log('tags:', formTags);
   // Load the SQLite database and filter the results based on the form data
   if ( db == null) {
     db = await fetch('/scryface/assets/data.json')
@@ -20,8 +18,8 @@ async function getResults() {
         }
         return response.json();
       })
-    console.log('db: ', db);
   }
+  // Filter JSON "db" to get results
   let results = db.filter(item =>
     item.name.toLowerCase().includes(data.searchbar)
   );
@@ -34,12 +32,18 @@ async function getResults() {
       results = results.filter(item => item.tags.includes(tag));
     })
   }
-  //console.log('results: ', results);
+  // Generate HTML results
   const resultsDiv = document.getElementById('face-container');
   let inHtml = ''
-  if (results == 0 ) {
-    inHtml = 'No results!';
+  if (data.gender == '' && data.eyecolor == '' && data.haircolor == '' && data.skintone == '' && formTags.length == 0 ) {
+    // No search criteria specified
+    // Remove this condition to show all results on blank form submission.
+    inHtml = '<p>Select any item to show filtered results.</p>';
+  } else if (results == 0 ) {
+    // No matching results
+    inHtml = '<p>No results!</p>';
   } else {
+    // Show matching faces
     results.forEach(item => {
       let thisHtml = '<h3>' + item.name + '</h3>'
       thisHtml += '<p>url: ' + item.url + '</p>'
@@ -50,6 +54,7 @@ async function getResults() {
   resultsDiv.innerHTML = inHtml;
 }
 
+// Load results on form submit (prevent default)
 form.addEventListener('submit', function(event) {
   event.preventDefault();
   getResults();
@@ -58,7 +63,6 @@ form.addEventListener('submit', function(event) {
 // Load results on select change
 selects.forEach(select => {
   select.addEventListener('change', function(event) {
-    //console.log(`Select changed: ${event.target.name} = ${event.target.value}`);
     getResults();
   });
 });
@@ -66,7 +70,6 @@ selects.forEach(select => {
 // Load results on tag button change
 tagbtns.forEach(btn => {
   btn.addEventListener('change', function(event) {
-    console.log('change');
     getResults();
-  })
-})
+  });
+});
